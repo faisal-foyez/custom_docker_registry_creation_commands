@@ -1,0 +1,21 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :5001
+  headers:
+    X-Content-Type-Options: [nosniff]
+    Access-Control-Allow-Origin: ['*']    # Allow all origins, or restrict to specific domains
+    Access-Control-Allow-Methods: ['GET', 'POST', 'DELETE']
+    Access-Control-Allow-Headers: ['Authorization', 'Accept', 'Content-Type']
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
